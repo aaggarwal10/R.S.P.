@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content = "height = device-height, width = 420, user-scalable = yes" /> 
+        <title>WebIOPi | Demo</title>
+        <script type="text/javascript" src="/webiopi.js"></script>
+        <script type="text/javascript">
+        webiopi().ready(function() {
+                var contentF, contentB, contentL, contentR, contentOn, contentU, contentD, contentPP, contentTP, button;
+                contentF = $("#contentF");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createButton("fwd", "F", fwdButton);
+		contentF.append(button);
+
+                contentB = $("#contentB");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createButton("bck", "B", bckButton);
+		contentB.append(button);
+
+		contentL = $("#contentL");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createButton("lft", "L", lftButton);
+		contentL.append(button);
+
+		contentR = $("#contentR");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createButton("rgt", "R", rgtButton);
+		contentR.append(button);
+
+		contentTP = $("#contentTP");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createButton("tp", "TP", tpButton);
+		contentTP.append(button);		
+
+		contentOn = $("#contentOn");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                //button = webiopi().createGPIOButton(23, "ON");
+
+		button = webiopi().createButton("on", "ON", onButton);
+		contentOn.append(button);
+
+		contentU = $("#contentU");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createButton("up", "PU", upButton);
+		contentU.append(button);
+
+		contentD = $("#contentD");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createButton("down", "PD", downButton);
+		contentD.append(button);
+
+		contentPP = $("#contentPP");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createButton("pp", "PP", ppButton);
+		contentPP.append(button);
+
+		var contentL1, contentL2, contentL3, contentL4, button;
+                contentL1 = $("#contentL1");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createGPIOButton(24, "L1");
+		contentL1.append(button);
+
+                contentL2 = $("#contentL2");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createGPIOButton(22, "L2");
+		contentL2.append(button);
+
+		contentL3 = $("#contentL3");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createGPIOButton(18, "L3");
+		contentL3.append(button);
+
+		contentL4 = $("#contentL4");
+                
+                // you can also create a button which calls a different function for mouse down and up events
+                //button = webiopi().createButton("hold", "Hold", mousedown, mouseup);
+                button = webiopi().createGPIOButton(17, "L4");
+		contentL4.append(button);
+
+		webiopi().refreshGPIO(true);
+               
+        });
+                
+        function mousedown() {
+                //webiopi().setValue(7,1);
+		webiopi().digitalWrite(7,1);
+        }
+        
+        function mouseup() {
+                webiopi().digitalWrite(7,0);
+		//webiopi().setValue(7,0);
+        }
+
+	function onButton() {
+		webiopi().digitalWrite(7,1);
+		webiopi().digitalWrite(8,0);
+	}
+
+	function upButton() {
+		webiopi().digitalWrite(9,1);
+		webiopi().digitalWrite(10,1);
+	}
+
+	function downButton() {
+		webiopi().digitalWrite(9,0);
+		webiopi().digitalWrite(10,0);
+	}
+
+	function ppButton() {
+		webiopi().digitalWrite(9,1);
+		webiopi().digitalWrite(10,0);
+	}
+
+	function fwdButton() {
+		webiopi().digitalWrite(7,1);
+		webiopi().digitalWrite(8,1);
+	}
+ 
+	function bckButton() {
+		webiopi().digitalWrite(7,0);
+		webiopi().digitalWrite(8,0);
+	}
+
+	function rgtButton() {
+		webiopi().digitalWrite(25,0);
+		webiopi().digitalWrite(11,0);
+	}
+
+	function lftButton() {
+		webiopi().digitalWrite(25,1);
+		webiopi().digitalWrite(11,1);
+	}
+
+	function tpButton() {
+		webiopi().digitalWrite(25,1);
+		webiopi().digitalWrite(11,0);
+	}
+
+        </script>
+        <style type="text/css">
+         	button {
+                        display: block;
+                        margin: 5px 5px 5px 5px;
+                        width: 260px;
+                        height: 45px;
+                        font-size: 8pt;
+                        font-weight: bold;
+                        color: green;
+                }
+
+		
+                }
+                
+        </style>
+</head>
+<body>
+        <table style="width: 300px">
+	<tr>
+		<td></td>
+		<td><div id="contentF" align="center"></div></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td><div id="contentL" align="center"></div></td>
+		<td></td>
+		<td><div id="contentR" align="center"></div></td>
+	</tr>
+
+	<tr>
+		<td></td>
+		<td><div id="contentB" align="center"></div></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td></td>
+		<td><br></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td><div id="contentTP" align="center"></div></td>
+		<td></td>
+		<td><div id="contentOn" align="center"></div></td>
+	</tr>
+
+	<tr>
+		<td></td>
+		<td><br></td>
+		<td></td>
+	</tr>
+
+
+	<tr>
+		<td><div id="contentU" align="center"></div></td>
+		<td><div id="contentPP" align="center"></div></td>
+		<td><div id="contentD" align="center"></div></td>
+	</tr>
+
+	<tr>
+		<td><br></td>
+	</tr>
+	<tr>
+	</tr>
+	
+	<tr>
+		<td><div id="contentL1" align="center"></div></td>
+		<td></td>
+		<td><div id="contentL2" align="center"></div></td>
+	</tr>
+
+	<tr>
+		<td><div id="contentL3" align="center"></div></td>
+		<td></td>
+		<td><div id="contentL4" align="center"></div></td>
+	</tr>
+
+</body>
+</html>
+
